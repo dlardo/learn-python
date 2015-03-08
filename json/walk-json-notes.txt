@@ -1,0 +1,81 @@
+>>> json_string = '''{
+ "variable-definitions": {
+   "@total": "132",
+   "@uri": "/api/juniper/sd/variable-management/variable-definitions",
+   "variable-definition": [
+     {
+       "@href": "/api/juniper/sd/variable-management/variable-definitions/623241",
+       "@uri": "/api/juniper/sd/variable-management/variable-definitions/623241",
+       "description": null,
+       "domain-id": "2916353",
+       "domain-name": "Global",
+       "id": "623241",
+       "name": "LOCAL-CHAT-VIP",
+       "type": "ADDRESS"
+     },
+     {
+       "@href": "/api/juniper/sd/variable-management/variable-definitions/623245",
+       "@uri": "/api/juniper/sd/variable-management/variable-definitions/623245",
+       "description": null,
+       "domain-id": "2916353",
+       "domain-name": "Global",
+       "id": "623245",
+       "name": "LOCAL-LCDS-VIP",
+       "type": "ADDRESS"
+     }
+   ]
+ }
+}
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... '''
+>>> print json_string
+{
+ "variable-definitions": {
+   "@total": "132",
+   "@uri": "/api/juniper/sd/variable-management/variable-definitions",
+   "variable-definition": [
+     {
+       "@href": "/api/juniper/sd/variable-management/variable-definitions/623241",
+       "@uri": "/api/juniper/sd/variable-management/variable-definitions/623241",
+       "description": null,
+       "domain-id": "2916353",
+       "domain-name": "Global",
+       "id": "623241",
+       "name": "LOCAL-CHAT-VIP",
+       "type": "ADDRESS"
+     },
+     {
+       "@href": "/api/juniper/sd/variable-management/variable-definitions/623245",
+       "@uri": "/api/juniper/sd/variable-management/variable-definitions/623245",
+       "description": null,
+       "domain-id": "2916353",
+       "domain-name": "Global",
+       "id": "623245",
+       "name": "LOCAL-LCDS-VIP",
+       "type": "ADDRESS"
+     }
+   ]
+ }
+}
+
+>>> import json
+>>> o = json.loads(json_string)
+>>> dir(o)
+['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
+>>> type(o)
+<type 'dict'>
+>>> o['variable-definitions']
+{u'@total': u'132', u'@uri': u'/api/juniper/sd/variable-management/variable-definitions', u'variable-definition': [{u'description': None, u'@uri': u'/api/juniper/sd/variable-management/variable-definitions/623241', u'@href': u'/api/juniper/sd/variable-management/variable-definitions/623241', u'domain-name': u'Global', u'domain-id': u'2916353', u'type': u'ADDRESS', u'id': u'623241', u'name': u'LOCAL-CHAT-VIP'}, {u'description': None, u'@uri': u'/api/juniper/sd/variable-management/variable-definitions/623245', u'@href': u'/api/juniper/sd/variable-management/variable-definitions/623245', u'domain-name': u'Global', u'domain-id': u'2916353', u'type': u'ADDRESS', u'id': u'623245', u'name': u'LOCAL-LCDS-VIP'}]}
+>>> o['variable-definitions']['variable-definition']
+[{u'description': None, u'@uri': u'/api/juniper/sd/variable-management/variable-definitions/623241', u'@href': u'/api/juniper/sd/variable-management/variable-definitions/623241', u'domain-name': u'Global', u'domain-id': u'2916353', u'type': u'ADDRESS', u'id': u'623241', u'name': u'LOCAL-CHAT-VIP'}, {u'description': None, u'@uri': u'/api/juniper/sd/variable-management/variable-definitions/623245', u'@href': u'/api/juniper/sd/variable-management/variable-definitions/623245', u'domain-name': u'Global', u'domain-id': u'2916353', u'type': u'ADDRESS', u'id': u'623245', u'name': u'LOCAL-LCDS-VIP'}]
+>>> type(o['variable-definitions']['variable-definition'])
+<type 'list'>
+>>> o['variable-definitions']['variable-definition'][0]
+{u'description': None, u'@uri': u'/api/juniper/sd/variable-management/variable-definitions/623241', u'@href': u'/api/juniper/sd/variable-management/variable-definitions/623241', u'domain-name': u'Global', u'domain-id': u'2916353', u'type': u'ADDRESS', u'id': u'623241', u'name': u'LOCAL-CHAT-VIP'}
+>>> o['variable-definitions']['variable-definition'][0]['name']
+u'LOCAL-CHAT-VIP'
+>>> for var in o['variable-definitions']['variable-definition']:
+...     print var['name']
+...
+LOCAL-CHAT-VIP
+LOCAL-LCDS-VIP
+>>>
