@@ -1,0 +1,35 @@
+Stolen from: http://www.w3schools.com/xml/default.asp
+
+#Tree
+<note>                                          #<-- This line defines the root element.  Everything is a
+  <to> Tove</to>                                #child to the root.  Like / in linux but named. There can be only one.
+ <from>Jani</from>
+  <heading>Reminder</heading>                   #The next 4 lines describe 4 child elements of the root (to, from,
+  <body>Don't forget me this weekend!</body>    #heading, and body):
+</note>                                         #<-- This line defines the end of the root element
+
+#Elements
+An XML element is everything from (including) the element's start tag to (including) the element's end tag.
+An element can contain: other elements, text, attributes, or a mix of everything.
+
+<root>                                          #All elements can have sub elements (child elements):
+  <child>                                       #The elements in an XML document form a document tree.
+    <subchild>.....</subchild>                  #
+  </child>                                      #The tree starts at the root and branches to the
+</root>                                         #lowest level of the tree.
+
+#Tags
+A tag is the name inside of the <>'s.  In "<to>Tove</to>", the tag is "to".
+
+#Attributes
+Attributes provide additional information about an element that is not a part of the data.
+Attributes are probably only important to the software that wants to manipulate the data.
+
+Ex: <file type="gif">computer.gif</file>
+<file></file> is the element, and type="gif" is the attribute.
+
+Attributes must always be quoted (single or double quotes, typically double.)
+
+There are no rules about when to use attributes or when to use elements.
+Attributes are handy in HTML. In XML my advice is to avoid them. Use elements instead.
+Attributes are difficult to read and maintain. Use elements for data. Use attributes for information that is not relevant to the data.
