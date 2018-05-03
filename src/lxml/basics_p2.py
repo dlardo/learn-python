@@ -23,14 +23,14 @@ bookstoreXML = '''
 </bookstore>
 '''
 
-print "Importing XML into LXML object"
+print("Importing XML into LXML object")
 parser = etree.XMLParser(remove_blank_text=True)
 bookstoreObj = etree.XML(bookstoreXML, parser)
 
 #Note that this line also works but it makes pretty printing fail due to whitespaces.
 # bookstoreObj = etree.fromstring(bookstoreXML)
 
-print "Add a New Book called 'Learning OpenStack' to the tree"
+print("Add a New Book called 'Learning OpenStack' to the tree")
 bookObj = etree.SubElement(bookstoreObj, "book", category="DevOps")
 etree.SubElement(bookObj, "title", lang="en").text = "Learning OpenStack"
 etree.SubElement(bookObj, "author").text = "Doug StackdaMack"
@@ -52,32 +52,32 @@ etree.SubElement(bookObj, "rating").text = "4 stars"
 #   ..        Selects the parent of the current node
 #    @        Selects attributes
 
-print "Removing new book's rating element"
+print("Removing new book's rating element")
 for bad in bookObj.xpath("rating"):
     bad.getparent().remove(bad)
 
-print "Removing all year elements from the tree"
+print("Removing all year elements from the tree")
 for item in bookObj.xpath("//year"):
     item.getparent().remove(item)
 
-print "Adding year back in everywhere, but now it's 1999"
+print("Adding year back in everywhere, but now it's 1999")
 for item in bookObj.xpath("//book"):
     etree.SubElement(item, "year").text = "1999"
 
-print "Changing price on harry potter to 40.00"
+print("Changing price on harry potter to 40.00")
 for item in bookObj.xpath("/bookstore/book/title"):
     if item.text == "Harry Potter":
         for price in item.getparent().xpath("price"):
             price.text = "40.00"
 
-print "Adding 1.50 to the price of Learning XML"
+print("Adding 1.50 to the price of Learning XML")
 from decimal import *  #Thanks floating point
 for item in bookObj.xpath("/bookstore/book/title"):
     if item.text == "Learning XML":
         for price in item.getparent().xpath("price"):
             price.text = str(Decimal(price.text) + Decimal('1.50'))
 
-print "\nFull XML:"
+print("\nFull XML:")
 print(etree.tostring(bookstoreObj, pretty_print=True))
 
 #Reference
